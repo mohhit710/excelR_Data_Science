@@ -4,7 +4,7 @@ import numpy as np
 
 # Load the saved model and scaler
 with open('titanic_model.pkl', 'rb') as model_file:
-    model = pickle.load(model_file)
+    logisticRegression = pickle.load(model_file)
 
 with open('scaler.pkl', 'rb') as scaler_file:
     scaler = pickle.load(scaler_file)
@@ -31,6 +31,6 @@ user_input_scaled = scaler.transform(user_input)
 
 # Predict the survival using the loaded model
 if st.button('Predict Survival'):
-    prediction = model.predict(user_input_scaled)
+    prediction = logisticRegression.predict(user_input_scaled)
     result = "Survived" if prediction == 1 else "Did not survive"
     st.write(f"The passenger {result}")
